@@ -2,7 +2,9 @@ import os
 import sqlite3
 from datetime import datetime
 
-DATABASE_URL = os.environ.get('DATABASE_URL')
+# Vercel / Neon might use different environment variable names
+DATABASE_URL = os.environ.get('DATABASE_URL') or os.environ.get('POSTGRES_URL') or os.environ.get('NEON_DATABASE_URL')
+
 if DATABASE_URL:
     import psycopg2
     from psycopg2.extras import RealDictCursor
@@ -11,7 +13,9 @@ def get_connection():
     if DATABASE_URL:
         return psycopg2.connect(DATABASE_URL)
     else:
-        conn = sqlite3.connect("recipes.db")
+        # Vercel environment is read-only except for /tmp
+        db_path = "/tmp/recipes.db" if os.environ.get('VERCEL') else "recipes.db"
+        conn = sqlite3.connect(db_path)
         conn.row_factory = sqlite3.Row
         return conn
 
