@@ -12,8 +12,8 @@ def generate_recipe(ingredients, cuisine="Any", diet="No Preference", time="Any"
     try:
         import logging
         genai.configure(api_key=api_key)
-        # Using gemini-1.5-flash as it is much faster for this task
-        model = genai.GenerativeModel('gemini-1.5-flash')
+        # Using gemini-3.5-flash as the primary fast model
+        model = genai.GenerativeModel('gemini-3.5-flash')
         prompt = f"""
 Act as an expert chef. You are building an AI-Powered Pantry-to-Plate Recipe Assistant.
 Create EXACTLY 3 distinct, realistic, and cookable recipes based on the following inputs:
@@ -159,4 +159,4 @@ Provide the output strictly in the following JSON format. RETURN ONLY VALID JSON
         logging.error(f"General Exception in generate_recipe: {error_msg}")
         if "429" in error_msg:
             return {"error": "AI is temporarily busy. Please wait a moment and try again."}
-        return {"error": "AI generation failed."}
+        return {"error": f"AI generation failed: {error_msg}"}
