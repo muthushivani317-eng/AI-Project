@@ -252,8 +252,76 @@ h3 {
 
 /* Responsive */
 @media (max-width: 768px) {
-  h1 { font-size: 2.2rem; }
+  h1 { font-size: 2rem !important; }
+  h2 { font-size: 1.5rem !important; }
+  
   .app-container { padding: 1rem; }
-  .hero-section { flex-direction: column; text-align: center !important; }
-  .hero-section > div { text-align: center !important; }
+  
+  /* Navbar */
+  .navbar { 
+    flex-direction: column; 
+    gap: 1rem; 
+  }
+  .nav-links { 
+    flex-wrap: wrap; 
+    justify-content: center; 
+    gap: 0.75rem !important;
+  }
+  .nav-link {
+    font-size: 0.85rem;
+  }
+  
+  /* Hero Section */
+  .hero-section { 
+    flex-direction: column; 
+    text-align: center !important; 
+    padding: 2rem 1rem !important;
+  }
+  .hero-section > div { 
+    text-align: center !important; 
+    flex-basis: 100% !important;
+    max-width: 100% !important;
+  }
+  .hero-section .subtitle { font-size: 1rem !important; }
+  
+  /* Forms and Inputs */
+  form {
+    flex-direction: column;
+  }
+  form button {
+    width: 100%;
+    justify-content: center;
+  }
+  
+  /* Buttons */
+  .btn-primary, .btn-secondary {
+    width: 100%;
+    justify-content: center;
+    padding: 0.85rem 1.5rem;
+  }
+
+  /* Recipe Results */
+  .recipe-result h2 {
+    font-size: 1.8rem !important;
+  }
+  
+  /* Glass panels padding */
+  .glass-panel {
+    padding: 1.25rem;
+  }
+  
+  /* Steps Container */
+  .steps-container {
+    grid-template-columns: 1fr;
+  }
+}
+
+@media (max-width: 480px) {
+  h1 { font-size: 1.75rem !important; }
+  .logo { font-size: 1.2rem; }
+  .nav-links { gap: 0.5rem !important; }
+  
+  .features-grid {
+    grid-template-columns: 1fr;
+  }
 }
