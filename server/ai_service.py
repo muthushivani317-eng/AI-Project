@@ -12,8 +12,8 @@ def generate_recipe(ingredients, cuisine="Any", diet="No Preference", time="Any"
     try:
         import logging
         genai.configure(api_key=api_key)
-        model = genai.GenerativeModel('gemini-3.5-flash')
-        
+        # Using gemini-1.5-flash as it is much faster for this task
+        model = genai.GenerativeModel('gemini-1.5-flash')
         prompt = f"""
 Act as an expert chef. You are building an AI-Powered Pantry-to-Plate Recipe Assistant.
 Create EXACTLY 3 distinct, realistic, and cookable recipes based on the following inputs:
@@ -73,7 +73,12 @@ Provide the output strictly in the following JSON format. RETURN ONLY VALID JSON
 }}
 """
         
-        response = model.generate_content(prompt)
+        response = model.generate_content(
+            prompt,
+            generation_config=genai.GenerationConfig(
+                response_mime_type="application/json"
+            )
+        )
         
         try:
             if hasattr(response, 'usage_metadata') and response.usage_metadata:
