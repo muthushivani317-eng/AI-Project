@@ -122,12 +122,12 @@ def generate():
         app.logger.error(f"[BACKEND ERROR] {recipe_data['error']}")
         if "temporarily busy" in recipe_data["error"] or "rate-limited" in recipe_data["error"]:
             return jsonify({"success": False, "error": "AI service is temporarily rate-limited. Please wait a moment and try again."}), 429
-        return jsonify({"success": False, "error": "AI returned an invalid recipe response."}), 502
+        return jsonify({"success": False, "error": recipe_data['error']}), 502
         
     recipes = recipe_data.get("recipes", [])
     if not recipes:
         app.logger.error("[BACKEND ERROR] No recipes in parsed JSON")
-        return jsonify({"success": False, "error": "AI returned an invalid recipe response."}), 502
+        return jsonify({"success": False, "error": "AI did not return any recipes."}), 502
         
     app.logger.info("[BACKEND] JSON parsing successful")
     app.logger.info(f"[BACKEND] Recipes generated: {len(recipes)}")

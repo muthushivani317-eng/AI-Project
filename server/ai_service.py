@@ -110,8 +110,8 @@ Provide the output strictly in the following JSON format. RETURN ONLY VALID JSON
         if not isinstance(recipes, list):
             return {"error": "Invalid JSON: 'recipes' must be an array"}
             
-        if len(recipes) != 3:
-            return {"error": f"Invalid JSON: expected exactly 3 recipes, got {len(recipes)}"}
+        if len(recipes) == 0:
+            return {"error": "Invalid JSON: expected at least 1 recipe, got 0"}
             
         required_keys = ["title", "description", "time_minutes", "servings", "difficulty", 
                          "available_ingredients", "missing_ingredients", "steps", "tip"]
