@@ -30,13 +30,14 @@ IMPORTANT INSTRUCTIONS:
 4. The "available_ingredients" MUST contain ONLY the ingredients from the user's pantry that are ACTUALLY used in the recipe. If an ingredient is not used, DO NOT list it.
 5. The "missing_ingredients" MUST contain ONLY ingredients genuinely required to complete the recipe that are NOT in the pantry. Do not mark a pantry ingredient as missing.
 6. Provide realistic quantities for ALL ingredients (e.g., "1 cup", "2 medium", "1 tbsp"). Do not use vague quantities like "some" or "as needed".
-7. Provide MUCH MORE DETAILED COOKING STEPS. A normal recipe should have 7-10 steps; a simple one 5-7 steps. Each step must explain an actual cooking action in logical sequence. Do not jump steps or give vague instructions like "cook the ingredients". When a spice/masala is required, the step MUST clearly tell the user when and how to add it, using the exact quantities specified in the ingredients list.
-8. Include reasonable quantities in the steps as well.
-9. The "servings" field MUST be a numeric value exactly matching {servings}.
-10. The "time_minutes" field MUST be a numeric value respecting the requested Cooking Time ({time}).
-11. The "cuisine" and "dietary preference" MUST be strictly respected. (If Vegetarian, NO meat/egg. If South Indian, use South Indian style/spices).
-12. The "description" should be a useful 1-2 sentence explanation of the dish.
-13. Provide one useful cooking tip for every recipe.
+7. Provide MUCH MORE DETAILED COOKING STEPS. A normal recipe should have 7-10 steps; a simple one 5-7 steps. Each step must explain an actual cooking action in logical sequence.
+8. WRITE ALL COOKING STEPS IN VERY SIMPLE, EVERYDAY ENGLISH. Use short sentences and avoid complex culinary jargon or advanced vocabulary. A beginner cook must be able to easily understand every word.
+9. When a spice/masala is required, the step MUST clearly tell the user when and how to add it, using the exact quantities specified in the ingredients list.
+10. The "servings" field MUST be a numeric value exactly matching {servings}.
+11. The "time_minutes" field MUST be a numeric value respecting the requested Cooking Time ({time}).
+12. The "cuisine" and "dietary preference" MUST be strictly respected. (If Vegetarian, NO meat/egg. If South Indian, use South Indian style/spices).
+13. The "description" should be a useful 1-2 sentence explanation of the dish, also written in simple English.
+14. Provide one useful cooking tip for every recipe.
 
 Provide the output strictly in the following JSON format. RETURN ONLY VALID JSON without any markdown formatting blocks like ```json. Do NOT provide any explanation before or after the JSON.
 
